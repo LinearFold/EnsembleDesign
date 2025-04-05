@@ -42,7 +42,7 @@ python EnsembleDesign.py [--fasta <path>] [--output_dir <path>] [--beam_size <in
 To run the program with a specific set of parameters, you can use a command similar to the following (note that we are using smaller parameters to make it run faster):
 
 ```
-python EnsembleDesign.py --fasta examples.fasta --output_dir ./outputs --beam_size 100 --lr 0.03 --epsilon 0.5 --num_iters 3 --num_runs 2 --num_threads 4
+python EnsembleDesign.py --fasta data/examples.fasta --output_dir ./outputs --beam_size 100 --lr 0.03 --epsilon 0.5 --num_iters 3 --num_runs 2 --num_threads 4
 ```
 
 The expected output is:
@@ -60,8 +60,12 @@ AUGGCGACCGUUCUCCUGGCGCUUCUGGUUUAUUUGGGUGCGCUGGUGGAUGCGUACCCAAUUAAGCCAGAAGCGCCAGG
 
 Alongside the main application, this repository includes additional files that are useful for testing and understanding the capabilities of the mRNA Design tool:
 
-- `examples.fasta`: This file contains 3 example protein sequences. It is designed to offer a quick and straightforward way to test the functionality of the software with pre-defined input. This file serves as the default input for the tool.
+- `data/examples.fasta`: This file contains 3 example protein sequences. It is designed to offer a quick and straightforward way to test the functionality of the software with pre-defined input. This file serves as the default input for the tool.
 
-- `uniprot.fasta`: Contains 20 protein sequences from the UniProt database used in our experiments.
+- `data/uniprot.fasta`: Contains 20 protein sequences from the UniProt database used in our experiments.
 
-- `covid_spike.fasta`: Contains the SARS-CoV-2 spike protein sequence used in our experiments.
+- `data/covid_spike.fasta`: Contains the SARS-CoV-2 spike protein sequence used in our experiments.
+
+- `coding_wheel.txt`: The RNA codon table used by EnsembleDesign.
+
+- `codon_usage_freq_table_human.csv`: A human codon usage frequency table.

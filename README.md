@@ -1,7 +1,7 @@
 # EnsembleDesign: Messenger RNA Design Minimizing Ensemble Free Energy via Probabilistic Lattice Parsing
-This repository  hosts the source code for the research paper titled *EnsembleDesign: Messenger RNA Design Minimizing Ensemble Free Energy via Probabilistic Lattice Parsing* by Ning Dai, Tianshuo Zhou, Wei Yu Tang, David H. Mathews, and Liang Huang, to appear in the Proceedings of ISMB 2025 (Bioinformatics, 2025).
+This repository  hosts the source code for the research paper titled *EnsembleDesign: Messenger RNA Design Minimizing Ensemble Free Energy via Probabilistic Lattice Parsing* by [Ning Dai](https://ndai.ai/), [Tianshuo Zhou](https://eecs.oregonstate.edu/~zhoutian), [Wei Yu Tang](https://eecs.oregonstate.edu/~tangwe), [David H. Mathews](https://rna.urmc.rochester.edu/), and [Liang Huang](https://eecs.oregonstate.edu/~huanlian), to appear in the *Proceedings of ISMB 2025* (*Bioinformatics*, 2025).
 
-If you use this repository in your research, please cite the above paper.
+If you use this repository in your research, please cite the above paper as well as [the LinearDesign paper](https://www.nature.com/articles/s41586-023-06127-z).
 
 
 ## Dependencies
@@ -56,6 +56,8 @@ AUGAAUGAGUACCAGUUUGUGCUCCCCUAUCCGCCGUCAUUGAAUACUUAUUGGCGGCGGAGGGGGAGCCAGUACUACAU
 AUGGCGACCGUUCUCCUGGCGCUUCUGGUUUAUUUGGGUGCGCUGGUGGAUGCGUACCCAAUUAAGCCAGAAGCGCCAGGAGAGGACGCCUUCUUAGGG
 ```
 
+Note that following LinearDesign, we use `-V -d0 -b0` options in LinearPartition to evaluate the ensemble free energy, which uses the Vienna energy model with no dangling ends and no beam search (although the mRNA design code does use beam search).
+
 ## Other Files
 
 Alongside the main application, this repository includes additional files that are useful for testing and understanding the capabilities of the mRNA Design tool:
@@ -64,8 +66,12 @@ Alongside the main application, this repository includes additional files that a
 
 - `data/uniprot.fasta`: Contains 20 protein sequences from the UniProt database used in our experiments.
 
-- `data/covid_spike.fasta`: Contains the SARS-CoV-2 spike protein sequence used in our experiments.
+- `data/covid_spike.fasta`: Contains the SARS-CoV-2 spike protein sequence used in our experiments, taken from the LinearDesign paper (Zhang et al., Nature 2023).
 
-- `coding_wheel.txt`: The RNA codon table used by EnsembleDesign.
+- `coding_wheel.txt`: RNA codon table (i.e., the genetic code).
 
-- `codon_usage_freq_table_human.csv`: A human codon usage frequency table.
+- `codon_usage_freq_table_human.csv`: A human codon usage frequency table from the LinearDesign paper, which is used by LinearDesign code to compute the codon adapation index (CAI). It is originally from [GenScript](https://www.genscript.com/tools/codon-frequency-table) (choose human instead of yeast).
+
+- `tools/LinearDesign`: [LinearDesign codebase](https://github.com/LinearDesignSoftware/LinearDesign) (baseline, for min MFE design).
+
+- `tools/LinearPartition`: [LinearPartition codebase](https://github.com/LinearFold/LinearPartition) (to calculate ensemble free energy). Note that we use `-V -d0 -b0` options to evaluate energies, following LinearDesign.
